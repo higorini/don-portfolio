@@ -1,0 +1,53 @@
+:root {
+    /* Colors */
+    --gold: #D4A017;
+    --gold-light: #F2C94C;
+    --gold-pale: #FFF0A0;
+    --crimson: #C0392B;
+    --royal-blue: #1A237E;
+    --deep-blue: #0D1B4B;
+    --violet: #6A0DAD;
+    --violet-light: #9B59B6;
+
+    /* Backgrounds */
+    --bg: #07091A;
+    --bg2: #0C0F24;
+    --bg3: #10152E;
+
+    /* Text Colors */
+    --text: #E8D9C0;
+    --text-muted: #9A8870;
+
+    /* Borders Colors */
+    --border: rgba(212, 160, 23, 0.12);
+
+    /* Typography Family */
+    --font-display: 'Cinzel Decorative', serif;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Raleway', sans-serif;
+
+    /* Typography Weights */
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-black: 900;
+
+    /* Spacing */
+    --padding-section-x: 60px;
+    --padding-section-y: 120px;
+    --padding-nav: 24px 60px;
+    --gap-sm: 8px;
+    --gap-md: 20px;
+    --gap-lg: 36px;
+    --gap-xl: 80px;
+
+    /* Z-Index */
+    --z-base: 0;
+    --z-content: 2;
+    --z-nav: 100;
+    --z-cursor-trail: 9998;
+    --z-cursor: 9999;
+    --z-lightbox: 1000;
+
+}
