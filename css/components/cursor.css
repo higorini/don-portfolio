@@ -1,0 +1,27 @@
+.cursor {
+  width: 12px;
+  height: 12px;
+  background-color: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor__trail {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor-trail);
+  transition: transform 0.35s ease;
+  opacity: 0.5;
+}
