@@ -30,14 +30,14 @@ function animateTrail() {
   requestAnimationFrame(animateTrail);
 }
 
-document.addEventListener("mouseenter", function () {
-  // Scale up the cursor when the mouse enters the document
-  cursor.style.transform = "scale(2.5)";
-});
-
-document.addEventListener("mouseleave", function () {
-  // Scale down the cursor when the mouse leaves the document
-  cursor.style.transform = "scale(1)";
+// Add hover effects to interactive elements
+hoverElements.forEach((Element) => {
+  Element.addEventListener("mouseenter", function () {
+    cursor.style.transform = "scale(2.5)";
+  });
+  Element.addEventListener("mouseleave", function () {
+    cursor.style.transform = "scale(1)";
+  });
 });
 
 // Start the animation loop for the cursor trail
