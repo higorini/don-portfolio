@@ -80,3 +80,14 @@
 .hero__highlight--crimson {
   color: var(--crimson);
 }
+
+.hero__lion {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: min(45vw, 600px);
+  opacity: 0.12;
+  pointer-events: none;
+}
