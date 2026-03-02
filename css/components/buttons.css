@@ -1,0 +1,54 @@
+.btn {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  display: inline-block;
+  padding: 16px 40px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+  color: var(--bg);
+  border: none;
+  box-shadow: 0 4px 30px rgba(212, 160, 23, 0.3);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(212, 160, 23, 0.5);
+}
+
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold));
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.btn--primary:hover::before {
+  opacity: 1;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(212, 160, 23, 0.5);
+  padding: 15px 40px;
+}
+
+.btn--outline:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 160, 23, 0.08);
+  border-color: var(--gold);
+}
