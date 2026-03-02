@@ -33,6 +33,8 @@
   background: linear-gradient(to right, rgba(212, 160, 23, 0.4), transparent);
 }
 
+/* About Section */
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -56,4 +58,66 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+}
+
+/* Skills Section */
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(212, 160, 23, 0.08);
+}
+
+.skill-block {
+  background: var(--bg);
+  padding: 44px 36px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-block:hover {
+  background: rgba(26, 35, 126, 0.3);
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+.skill-block__icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  color: var(--gold);
+  stroke: currentColor;
+}
+
+.skill-block__name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 12px;
+  font-weight: var(--weight-semibold);
+}
+
+.skill-block__desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.skill-block__tags {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  color: var(--gold);
 }
