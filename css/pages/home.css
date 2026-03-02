@@ -33,12 +33,6 @@
   background: linear-gradient(to right, rgba(212, 160, 23, 0.4), transparent);
 }
 
-#about {
-  background: var(--bg2);
-  position: relative;
-  z-index: var(--z-content);
-}
-
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
