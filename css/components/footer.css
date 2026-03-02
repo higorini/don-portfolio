@@ -1,0 +1,23 @@
+.footer {
+  border-top: 1px solid rgba(212, 160, 23, 0.1);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.footer__copy,
+.footer__tagline {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.footer__crown {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
