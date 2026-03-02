@@ -69,7 +69,84 @@
 
     <main>
       <section id="hero" class="hero">
-        <div class="hero__lines"></div>
+        <div class="hero__lines">
+          <svg
+            viewBox="0 0 1200 800"
+            preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#D4A017" />
+                <stop offset="100%" stop-color="#6A0DAD" />
+              </linearGradient>
+            </defs>
+
+            <!-- Diagonal lines -->
+            <line
+              x1="-100"
+              y1="0"
+              x2="1400"
+              y2="800"
+              stroke="url(#lineGrad)"
+              stroke-width="1"
+            />
+            <line
+              x1="-100"
+              y1="150"
+              x2="1400"
+              y2="950"
+              stroke="url(#lineGrad)"
+              stroke-width="1"
+            />
+            <line
+              x1="-100"
+              y1="300"
+              x2="1400"
+              y2="1100"
+              stroke="url(#lineGrad)"
+              stroke-width="1"
+            />
+
+            <!-- Diamond (two rotated rectangles) -->
+            <rect
+              x="900"
+              y="100"
+              width="200"
+              height="200"
+              fill="none"
+              stroke="#D4A017"
+              stroke-width="0.5"
+              transform="rotate(45 1000 200)"
+            />
+            <rect
+              x="880"
+              y="80"
+              width="240"
+              height="240"
+              fill="none"
+              stroke="#6A0DAD"
+              stroke-width="0.5"
+              transform="rotate(45 1000 200)"
+            />
+
+            <!-- Corner details -->
+            <path
+              d="M 50 750 L 50 800 L 100 800"
+              stroke="#D4A017"
+              stroke-width="1"
+              fill="none"
+            />
+            <path
+              d="M 1150 750 L 1150 800 L 1100 800"
+              stroke="#D4A017"
+              stroke-width="1"
+              fill="none"
+            />
+          </svg>
+        </div>
 
         <img src="./assets/images/logo.svg" alt="" class="hero__lion" />
 
