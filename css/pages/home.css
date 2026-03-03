@@ -145,6 +145,11 @@
   gap: 2px;
 }
 
+.projects__footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
 /* Contact Section */
 
 #contact {

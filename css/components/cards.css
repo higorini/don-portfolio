@@ -132,3 +132,20 @@
   color: var(--gold);
   transform: translateX(6px);
 }
+
+.project-item--placeholder {
+  border-style: dashed;
+  border-color: rgba(212, 160, 23, 0.3);
+  opacity: 0.7;
+  transition: all 0.4s;
+}
+
+.project-item--placeholder:hover {
+  opacity: 1;
+  border-color: var(--gold);
+  border-style: dashed;
+}
+
+.project-item--placeholder .project-item__number {
+  color: rgba(212, 160, 23, 0.15);
+}

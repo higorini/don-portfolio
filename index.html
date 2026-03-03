@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="./css/components/footer.css" />
     <!-- Home -->
     <link rel="stylesheet" href="./css/pages/home.css" />
+    <!-- Projects List -->
+    <link rel="stylesheet" href="./css/pages/projects-list.css" />
     <!-- Form -->
     <link rel="stylesheet" href="./css/components/form.css" />
     <!-- Project Details -->
@@ -69,7 +71,7 @@
       </ul>
     </nav>
 
-    <main>
+    <main data-view="home" class="is-active">
       <section id="hero" class="hero">
         <div class="hero__lines">
           <svg
@@ -223,12 +225,12 @@
 
             <div class="about__stats">
               <div class="stat-card">
-                <div class="stat-card__number">20+</div>
+                <div class="stat-card__number" id="stat-projects">20+</div>
                 <div class="stat-card__label">Sistemas entregues</div>
               </div>
 
               <div class="stat-card">
-                <div class="stat-card__number">7</div>
+                <div class="stat-card__number" id="stat-years">7</div>
                 <div class="stat-card__label">Anos construindo produtos</div>
               </div>
 
@@ -453,6 +455,12 @@
           </div>
 
           <div id="projects-list"></div>
+
+          <div class="projects__footer">
+            <a href="/projetos" data-link class="btn btn--outline"
+              >Ver todos os projetos</a
+            >
+          </div>
         </div>
       </section>
 
@@ -565,6 +573,10 @@
         </div>
       </section>
     </main>
+
+    <div data-view="projects-list-view" id="projects-page"></div>
+
+    <div data-view="project" id="project-detail"></div>
 
     <footer class="footer">
       <span class="footer__copy"
