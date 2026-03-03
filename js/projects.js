@@ -51,14 +51,15 @@ function renderProjects() {
     projectItem.classList.add("project-item");
 
     projectItem.innerHTML = `
+      <span class="project-item__number">${project.number}</span>
       <div class="project-item__info">
-        <span class="project-item__number">${project.number}</span>
         <h3 class="project-item__name">${project.name}</h3>
+        <p class="project-item__description">${project.description}</p>
+        <div class="project-item__tags">
+          ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+        </div>
       </div>
-      <p class="project-item__description">${project.description}</p>
-      <div class="project-item__tags">
-        ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
-      </div>
+      <div class="project-item__arrow">→</div>
     `;
 
     projectsList.appendChild(projectItem);

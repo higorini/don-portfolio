@@ -35,6 +35,11 @@
 
 /* About Section */
 
+#about {
+  position: relative;
+  z-index: var(--z-content);
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,6 +66,11 @@
 }
 
 /* Skills Section */
+
+#skills {
+  position: relative;
+  z-index: var(--z-content);
+}
 
 .skills__grid {
   display: grid;
@@ -120,4 +130,17 @@
   padding: 4px 10px;
   border: 1px solid rgba(212, 160, 23, 0.25);
   color: var(--gold);
+}
+
+/* Projects Section */
+
+#projects {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+#projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
