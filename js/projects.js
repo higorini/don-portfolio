@@ -419,7 +419,7 @@ function renderProjectsPage() {
     <div class="projects-page">
       <div class="projects-page__hero">
         <div class="section-container">
-          <a href="/" data-link data-back="true" class="projects-page__back">
+          <a href="/" data-link class="projects-page__back">
             ← Voltar ao Portfolio
           </a>
           <div class="projects-page__hero-content">
