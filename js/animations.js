@@ -1,3 +1,10 @@
+window.addEventListener("scroll", () => {
+  const heroBg = document.querySelector(".project-hero__bg img");
+  if (heroBg) {
+    heroBg.style.transform = `scale(1.05) translateY(${window.scrollY * 0.15}px)`;
+  }
+}, { passive: true });
+
 let lion = document.querySelector(".hero__lion");
 
 if (lion) {
