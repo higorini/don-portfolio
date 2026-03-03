@@ -8,7 +8,6 @@ let mx = 0;
 let my = 0;
 let tx = 0;
 let ty = 0;
-
 // Add an event listener to track mouse movement
 document.addEventListener("mousemove", function (e) {
   // Update the mouse position variables
@@ -18,7 +17,7 @@ document.addEventListener("mousemove", function (e) {
   cursor.style.left = mx - 6 + "px";
   cursor.style.top = my - 6 + "px";
 });
-
+// Create an animation loop to smoothly animate the cursor trail
 function animateTrail() {
   // Smoothly move the trail towards the mouse position
   tx += (mx - tx) * 0.1;
@@ -29,16 +28,22 @@ function animateTrail() {
   // Continue the animation loop
   requestAnimationFrame(animateTrail);
 }
-
-// Add hover effects to interactive elements
-hoverElements.forEach((Element) => {
-  Element.addEventListener("mouseenter", function () {
-    cursor.style.transform = "scale(2.5)";
+// Create a helper function to apply hover effects to a list of elements
+function applyHoverEffect(elements) {
+  elements.forEach((el) => {
+    el.addEventListener(
+      "mouseenter",
+      () => (cursor.style.transform = "scale(2.5)"),
+    );
+    el.addEventListener(
+      "mouseleave",
+      () => (cursor.style.transform = "scale(1)"),
+    );
   });
-  Element.addEventListener("mouseleave", function () {
-    cursor.style.transform = "scale(1)";
-  });
-});
-
+}
+// Apply the hover effect to all links and buttons on the page
+applyHoverEffect(document.querySelectorAll("a, button"));
+// Expose the hover effect function globally so other scripts can reuse it
+window.applyCursorHover = applyHoverEffect;
 // Start the animation loop for the cursor trail
 animateTrail();

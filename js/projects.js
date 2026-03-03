@@ -109,8 +109,13 @@ const projects = [
   },
 ];
 
-// Expõe globalmente — essencial para o router e renderProjectsPage
 window.projects = projects;
+
+function applyCursorToNewElements() {
+  if (window.applyCursorHover) {
+    window.applyCursorHover(document.querySelectorAll("a, button"));
+  }
+}
 
 function projectCardHtml(project) {
   const tagsHtml = (project.tags || [])
@@ -177,6 +182,8 @@ function renderProjects() {
 
     projectsList.appendChild(projectItem);
   });
+
+  applyCursorToNewElements();
 }
 
 function renderProjectsPage() {
@@ -234,6 +241,8 @@ function renderProjectsPage() {
     </div>
   `;
 
+  applyCursorToNewElements();
+
   container.addEventListener("click", (e) => {
     if (e.target.id === "load-more-btn") {
       currentLimit = allProjects.length;
@@ -263,6 +272,8 @@ function renderProjectsPage() {
             });
           }
         });
+
+        applyCursorToNewElements();
       }, 300);
     }
   });
