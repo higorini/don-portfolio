@@ -117,6 +117,12 @@ function applyCursorToNewElements() {
   }
 }
 
+function getAllTags() {
+  const tagSet = new Set();
+  projects.forEach((p) => p.tags.forEach((t) => tagSet.add(t)));
+  return Array.from(tagSet).sort();
+}
+
 function projectCardHtml(project) {
   const tagsHtml = (project.tags || [])
     .map((t) => `<span class="tag">${t}</span>`)
@@ -152,6 +158,32 @@ function placeholderCardHtml(number) {
       <span class="project-item__arrow" aria-hidden="true">→</span>
     </a>
   `;
+}
+
+function emptyStateHtml(tag) {
+  return `
+    <div class="projects-page__empty">
+      <span class="projects-page__empty-icon">◈</span>
+      <p class="projects-page__empty-title">Nenhum projeto com a tag <em>${tag}</em></p>
+      <p class="projects-page__empty-sub">Tenta outra categoria ou vê todos os projetos.</p>
+    </div>
+  `;
+}
+
+function animateCards(container, startIndex = 0) {
+  const cards = container.querySelectorAll(".project-item");
+  cards.forEach((card, i) => {
+    if (i < startIndex) return;
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    card.style.transition = `opacity 0.5s ease ${(i - startIndex) * 0.07}s, transform 0.5s ease ${(i - startIndex) * 0.07}s`;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      });
+    });
+  });
 }
 
 function renderProjects() {
@@ -195,11 +227,39 @@ function renderProjectsPage() {
   const allProjects = window.projects || [];
   const INITIAL_LIMIT = 6;
   let currentLimit = INITIAL_LIMIT;
+  let activeTag = null;
+
+  const allTags = getAllTags();
+
+  const tagsBarHtml = `
+    <div class="projects-page__filters" id="tag-filters">
+      <button class="projects-page__filter-tag projects-page__filter-tag--active" data-tag="all">
+        Todos
+      </button>
+      ${allTags
+        .map(
+          (t) => `
+        <button class="projects-page__filter-tag" data-tag="${t}">${t}</button>
+      `,
+        )
+        .join("")}
+    </div>
+  `;
+
+  function getFilteredProjects() {
+    if (!activeTag) return allProjects;
+    return allProjects.filter((p) => p.tags.includes(activeTag));
+  }
 
   function getListHtml(limit) {
-    const visible = allProjects.slice(0, limit);
+    const filtered = getFilteredProjects();
+    const visible = filtered.slice(0, limit);
+    const hasMore = filtered.length > limit;
     const nextNumber = String(allProjects.length + 1).padStart(2, "0");
-    const hasMore = allProjects.length > limit;
+
+    if (filtered.length === 0) {
+      return emptyStateHtml(activeTag);
+    }
 
     return `
       ${visible.map(projectCardHtml).join("")}
@@ -208,9 +268,31 @@ function renderProjectsPage() {
           ? `<div class="projects-page__load-more">
             <button class="btn btn--outline" id="load-more-btn">Ver mais projetos</button>
            </div>`
-          : placeholderCardHtml(nextNumber)
+          : !activeTag
+            ? placeholderCardHtml(nextNumber)
+            : ""
       }
     `;
+  }
+
+  function updateCount() {
+    const countEl = document.getElementById("projects-count");
+    if (!countEl) return;
+    const filtered = getFilteredProjects();
+    const total = allProjects.length;
+    countEl.innerHTML = activeTag
+      ? `<span>${filtered.length}</span> de ${total} projetos`
+      : `<span>${total}</span> projetos`;
+  }
+
+  function renderList(animate = true, startIndex = 0) {
+    const list = document.getElementById("all-projects-list");
+    if (!list) return;
+    currentLimit = INITIAL_LIMIT;
+    list.innerHTML = getListHtml(currentLimit);
+    updateCount();
+    if (animate) animateCards(list, startIndex);
+    applyCursorToNewElements();
   }
 
   container.innerHTML = `
@@ -230,7 +312,8 @@ function renderProjectsPage() {
 
       <div class="projects-page__list">
         <div class="section-container">
-          <div class="projects-page__count">
+          ${tagsBarHtml}
+          <div class="projects-page__count" id="projects-count">
             <span>${allProjects.length}</span> projetos
           </div>
           <div id="all-projects-list">
@@ -241,38 +324,43 @@ function renderProjectsPage() {
     </div>
   `;
 
+  const list = document.getElementById("all-projects-list");
+  animateCards(list, 0);
   applyCursorToNewElements();
 
   container.addEventListener("click", (e) => {
-    if (e.target.id === "load-more-btn") {
-      currentLimit = allProjects.length;
-      const list = document.getElementById("all-projects-list");
+    const filterBtn = e.target.closest("[data-tag]");
+    if (filterBtn) {
+      const tag = filterBtn.dataset.tag;
+      activeTag = tag === "all" ? null : tag;
 
-      const loadMoreDiv = document.querySelector(".projects-page__load-more");
+      container
+        .querySelectorAll(".projects-page__filter-tag")
+        .forEach((btn) => {
+          btn.classList.toggle(
+            "projects-page__filter-tag--active",
+            btn.dataset.tag === tag,
+          );
+        });
+
+      renderList(true, 0);
+      return;
+    }
+
+    if (e.target.id === "load-more-btn") {
+      const prevLimit = currentLimit;
+      currentLimit = getFilteredProjects().length;
+      const listEl = document.getElementById("all-projects-list");
+
+      const loadMoreDiv = container.querySelector(".projects-page__load-more");
       if (loadMoreDiv) {
         loadMoreDiv.style.opacity = "0";
         loadMoreDiv.style.transition = "opacity 0.3s";
       }
 
       setTimeout(() => {
-        list.innerHTML = getListHtml(currentLimit);
-
-        const allCards = list.querySelectorAll(".project-item");
-        allCards.forEach((card, i) => {
-          if (i >= INITIAL_LIMIT) {
-            card.style.opacity = "0";
-            card.style.transform = "translateY(20px)";
-            card.style.transition = `opacity 0.5s ease ${(i - INITIAL_LIMIT) * 0.08}s, transform 0.5s ease ${(i - INITIAL_LIMIT) * 0.08}s`;
-
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                card.style.opacity = "1";
-                card.style.transform = "translateY(0)";
-              });
-            });
-          }
-        });
-
+        listEl.innerHTML = getListHtml(currentLimit);
+        animateCards(listEl, prevLimit);
         applyCursorToNewElements();
       }, 300);
     }
