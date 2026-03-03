@@ -144,3 +144,140 @@
   flex-direction: column;
   gap: 2px;
 }
+
+/* Contact Section */
+
+#contact {
+  position: relative;
+  z-index: var(--z-content);
+  overflow: hidden;
+}
+
+.contact__bg-lion {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+}
+
+.contact__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: var(--weight-black);
+  background: linear-gradient(
+    135deg,
+    var(--gold-pale),
+    var(--gold) 50%,
+    var(--violet-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+.contact__sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 60px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact__divider {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 8px 0;
+}
+
+.contact__divider::before,
+.contact__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(212, 160, 23, 0.3),
+    transparent
+  );
+}
+
+.contact__divider-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.contact-link {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  color: var(--gold);
+  text-decoration: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.contact-link__main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-link__hint {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.contact-link:hover {
+  background-color: rgba(212, 160, 23, 0.1);
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+
+.contact-link__icon {
+  width: 24px;
+  flex-shrink: 0;
+}
