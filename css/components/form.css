@@ -44,3 +44,7 @@
   resize: vertical;
   min-height: 140px;
 }
+
+.form__submit {
+  align-self: flex-end;
+}
