@@ -228,3 +228,15 @@
     align-items: center;
   }
 }
+
+.hero__typing-cursor {
+  display: inline-block;
+  color: var(--gold);
+  -webkit-text-fill-color: var(--gold);
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
