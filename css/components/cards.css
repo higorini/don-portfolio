@@ -149,3 +149,33 @@
 .project-item--placeholder .project-item__number {
   color: rgba(212, 160, 23, 0.15);
 }
+
+@media (max-width: 768px) {
+  .project-item {
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .project-item__arrow {
+    display: none;
+  }
+
+  .project-item__number {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-item {
+    grid-template-columns: 1fr;
+  }
+
+  .project-item__number {
+    display: none;
+  }
+
+  .stat-card {
+    padding: 24px 20px;
+  }
+}

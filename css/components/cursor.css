@@ -25,3 +25,14 @@
   transition: transform 0.35s ease;
   opacity: 0.5;
 }
+
+@media (hover: none) and (pointer: coarse) {
+  .cursor,
+  .cursor__trail {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+}

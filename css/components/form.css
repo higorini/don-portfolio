@@ -48,3 +48,14 @@
 .form__submit {
   align-self: flex-end;
 }
+
+@media (max-width: 768px) {
+  .form__input,
+  .form__textarea {
+    box-sizing: border-box;
+  }
+
+  .form__submit {
+    width: 100%;
+  }
+}

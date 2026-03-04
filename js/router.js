@@ -496,7 +496,15 @@ document.addEventListener("click", (e) => {
   if (!href) return;
 
   if (href.startsWith("http")) return;
-  if (href.startsWith("#")) return;
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    if (window.location.pathname === "/") {
+      scrollToSectionFromHash(href);
+    } else {
+      navigateTo("/" + href);
+    }
+    return;
+  }
 
   e.preventDefault();
 

@@ -448,6 +448,27 @@ function renderProjectsPage() {
   animateCards(list, 0);
   applyCursorToNewElements();
 
+  const filtersEl = container.querySelector("#tag-filters");
+  if (filtersEl) {
+    const select = document.createElement("select");
+    select.className = "projects-page__filter-select";
+    select.innerHTML =
+      `<option value="all">Todos os projetos</option>` +
+      allTags.map((t) => `<option value="${t}">${t}</option>`).join("");
+    filtersEl.parentNode.insertBefore(select, filtersEl.nextSibling);
+
+    select.addEventListener("change", () => {
+      activeTag = select.value === "all" ? null : select.value;
+      container.querySelectorAll(".projects-page__filter-tag").forEach((btn) => {
+        btn.classList.toggle(
+          "projects-page__filter-tag--active",
+          btn.dataset.tag === select.value,
+        );
+      });
+      renderList(true, 0);
+    });
+  }
+
   container.addEventListener("click", (e) => {
     const filterBtn = e.target.closest("[data-tag]");
     if (filterBtn) {

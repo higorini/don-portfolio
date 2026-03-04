@@ -171,3 +171,48 @@
   color: var(--gold);
   text-transform: uppercase;
 }
+
+@media (max-width: 1024px) {
+  .hero__lion {
+    animation: none;
+    opacity: 0.15;
+    width: min(38vw, 400px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__lion {
+    display: none;
+  }
+
+  .hero__name {
+    font-size: clamp(3.5rem, 12vw, 6rem);
+  }
+
+  .hero__title {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .hero__description {
+    max-width: 100%;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__name {
+    font-size: clamp(2.8rem, 10vw, 4rem);
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}

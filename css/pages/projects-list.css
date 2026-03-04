@@ -164,3 +164,47 @@
   color: var(--text-muted);
   opacity: 0.6;
 }
+
+.projects-page__filter-select {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .projects-page__hero {
+    padding: 120px 0 24px;
+  }
+
+  .projects-page__title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .projects-page__sub {
+    max-width: 100%;
+  }
+
+  .projects-page__filters {
+    display: none;
+  }
+
+  .projects-page__filter-select {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .projects-page__count {
+    font-size: 0.85rem;
+  }
+
+  .projects-page__load-more .btn {
+    width: 100%;
+  }
+}

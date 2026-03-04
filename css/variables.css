@@ -50,3 +50,15 @@
   --z-cursor: 9999;
   --z-lightbox: 1000;
 }
+
+@media (max-width: 768px) {
+  :root {
+    --padding-section-x: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --padding-section-x: 16px;
+  }
+}
