@@ -215,4 +215,16 @@
   .hero__scroll {
     display: none;
   }
+
+  .hero__content {
+    text-align: center;
+  }
+
+  .hero__eyebrow {
+    justify-content: center;
+  }
+
+  .hero__ctas {
+    align-items: center;
+  }
 }

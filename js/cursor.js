@@ -1,4 +1,12 @@
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+const isTouchDevice = (
+  "ontouchstart" in window ||
+  navigator.maxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0
+);
+
+const prefersMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+if (!isTouchDevice && prefersMouse) {
   // Get references to the cursor and cursor trail elements
   let cursor = document.getElementById("cursor");
   let cursorTrail = document.getElementById("cursor-trail");

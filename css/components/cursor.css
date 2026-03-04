@@ -26,13 +26,13 @@
   opacity: 0.5;
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none), (pointer: coarse), (any-pointer: coarse) {
   .cursor,
   .cursor__trail {
-    display: none;
+    display: none !important;
   }
 
   body {
-    cursor: auto;
+    cursor: auto !important;
   }
 }
