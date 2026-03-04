@@ -35,4 +35,13 @@
   body {
     cursor: auto !important;
   }
+
+  .form,
+  .form__input,
+  .form__textarea,
+  .form__label,
+  .form__submit,
+  .projects-page__filter-tag {
+    cursor: auto !important;
+  }
 }

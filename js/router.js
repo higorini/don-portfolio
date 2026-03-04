@@ -56,7 +56,7 @@ function renderProjectDetail(slug) {
   }
 
   const prevProject = currentIndex > 0 ? list[currentIndex - 1] : null;
-  const nextProject = list[currentIndex + 1] || null;
+  const nextProject = project.nextProject || null;
 
   const screenshotsHtml = project.images?.screenshots?.length
     ? `
@@ -199,7 +199,7 @@ function renderProjectDetail(slug) {
           `
               : ""
           }
-          <div class="project-hero__category">ERP · Full Stack · Real-time</div>
+          ${project.category ? `<div class="project-hero__category">${project.category}</div>` : ""}
           <h1 class="project-hero__title">${project.name}</h1>
           <p class="project-hero__tagline">${project.description}</p>
           <div class="project-hero__meta">
@@ -224,26 +224,67 @@ function renderProjectDetail(slug) {
                 : ""
             }
             ${
-              project.status
+              project.status === "production"
                 ? `
               <div>
                 <div class="project-hero__meta-label">Status</div>
                 <div class="project-hero__meta-value" style="color:#27ae60">Produção Ativa</div>
               </div>
             `
-                : ""
+                : project.status === "development"
+                  ? `
+              <div>
+                <div class="project-hero__meta-label">Status</div>
+                <div class="project-hero__meta-value" style="color:var(--gold)">Em Desenvolvimento</div>
+              </div>
+            `
+                  : ""
             }
             ${
               project.users
                 ? `
               <div>
-                <div class="project-hero__meta-label">Usuários Ativos</div>
+                ${project.usersLabel ? `<div class="project-hero__meta-label">${project.usersLabel}</div>` : ""}
                 <div class="project-hero__meta-value">${project.users}</div>
               </div>
             `
                 : ""
             }
           </div>
+          ${
+            project.github || project.link
+              ? `
+            <div class="project-hero__actions">
+              ${
+                project.github === "restrito"
+                  ? `<span class="project-hero__action-btn--restricted">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Repositório Privado
+                </span>`
+                  : project.github
+                    ? `<a href="${project.github}" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  Ver Código
+                </a>`
+                    : ""
+              }
+              ${
+                project.link === "restrito"
+                  ? `<span class="project-hero__action-btn--restricted">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Deploy Privado
+                </span>`
+                  : project.link
+                    ? `<a href="${project.link}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                  Ver ao Vivo
+                </a>`
+                    : ""
+              }
+            </div>
+          `
+              : ""
+          }
         </div>
       </section>
 
@@ -252,14 +293,20 @@ function renderProjectDetail(slug) {
           <div class="project-overview__grid">
             <div class="project-overview__text">
               <div class="project-section-label">Visão Geral</div>
-              <h2 class="project-overview__title">Um ERP construído para <em>resistir</em> sob carga real</h2>
+              ${project.overviewTitle ? `<h2 class="project-overview__title">${project.overviewTitle}</h2>` : ""}
               ${(project.overview || []).map((p) => `<p>${p}</p>`).join("")}
             </div>
             <div class="project-sidebar">
+              ${
+                project.users
+                  ? `
               <div class="project-sidebar__card">
-                <div class="project-sidebar__label">Usuários Simultâneos</div>
-                <div class="project-sidebar__value project-sidebar__value--highlight">${project.users || project.clients || "—"}</div>
+                ${project.usersLabel ? `<div class="project-sidebar__label">${project.usersLabel}</div>` : ""}
+                <div class="project-sidebar__value project-sidebar__value--highlight">${project.users}</div>
               </div>
+            `
+                  : ""
+              }
               <div class="project-sidebar__card">
                 <div class="project-sidebar__label">Stack Completa</div>
                 <div class="project-sidebar__tags">
@@ -267,7 +314,7 @@ function renderProjectDetail(slug) {
                 </div>
               </div>
               ${
-                project.team
+                project.team?.length
                   ? `
                 <div class="project-sidebar__card">
                   <div class="project-sidebar__label">Colaboradores</div>
@@ -293,77 +340,37 @@ function renderProjectDetail(slug) {
 
       ${screenshotsHtml}
 
+      ${
+        project.archLayers?.length
+          ? `
       <section class="project-architecture">
         <div class="section-container">
           <div class="project-architecture__grid">
             <div class="project-architecture__text">
               <div class="project-section-label">Arquitetura</div>
-              <h2 class="project-architecture__title">Decisões que importam em produção</h2>
-              <p>O sistema usa uma arquitetura <strong>fullstack unificada no Next.js 15</strong>, com App Router e Server Components para renderização híbrida onde performance é crítica.</p>
-              <p>O estado global é gerenciado pelo <strong>Zustand</strong> — escolha deliberada sobre Redux pela leveza e pelo modelo mental mais limpo em sistemas com muitas slices de estado independentes.</p>
-              <p>A camada real-time via <strong>Socket.IO</strong> gerencia notificações, atualizações de status e sincronização entre usuários sem polling — fundamental quando você tem 3K conexões ativas.</p>
+              <h2 class="project-architecture__title">${project.archTitle || ""}</h2>
+              ${(project.archText || []).map((p) => `<p>${p}</p>`).join("")}
             </div>
             <div class="arch-diagram">
-              <div class="arch-layer arch-layer--frontend">
-                <div class="arch-layer__label">Frontend</div>
+              ${project.archLayers
+                .map(
+                  (layer, i) => `
+              <div class="arch-layer arch-layer--${layer.type}">
+                <div class="arch-layer__label">${layer.label}</div>
                 <div class="arch-layer__items">
-                  <span class="arch-layer__item">Next.js 15</span>
-                  <span class="arch-layer__item">React 19</span>
-                  <span class="arch-layer__item">App Router</span>
-                  <span class="arch-layer__item">Server Components</span>
+                  ${layer.items.map((item) => `<span class="arch-layer__item">${item}</span>`).join("")}
                 </div>
               </div>
-              <div class="arch-arrow">↕</div>
-              <div class="arch-layer arch-layer--state">
-                <div class="arch-layer__label">State Management</div>
-                <div class="arch-layer__items">
-                  <span class="arch-layer__item">Zustand</span>
-                  <span class="arch-layer__item">React Query</span>
-                  <span class="arch-layer__item">Context API</span>
-                </div>
-              </div>
-              <div class="arch-arrow">↕</div>
-              <div class="arch-layer arch-layer--realtime">
-                <div class="arch-layer__label">Real-time</div>
-                <div class="arch-layer__items">
-                  <span class="arch-layer__item">Socket.IO</span>
-                  <span class="arch-layer__item">WebSockets</span>
-                  <span class="arch-layer__item">Eventos</span>
-                </div>
-              </div>
-              <div class="arch-arrow">↕</div>
-              <div class="arch-layer arch-layer--backend">
-                <div class="arch-layer__label">Backend / API</div>
-                <div class="arch-layer__items">
-                  <span class="arch-layer__item">Node.js</span>
-                  <span class="arch-layer__item">API Routes</span>
-                  <span class="arch-layer__item">Auth JWT</span>
-                </div>
-              </div>
-              <div class="arch-arrow">↕</div>
-              <div class="arch-layer arch-layer--db">
-                <div class="arch-layer__label">Database</div>
-                <div class="arch-layer__items">
-                  <span class="arch-layer__item">MongoDB</span>
-                  <span class="arch-layer__item">Mongoose</span>
-                  <span class="arch-layer__item">Índices</span>
-                </div>
-              </div>
-              <div class="arch-arrow">↕</div>
-              <div class="arch-layer arch-layer--infra">
-                <div class="arch-layer__label">Infraestrutura</div>
-                <div class="arch-layer__items">
-                  <span class="arch-layer__item">VPS</span>
-                  <span class="arch-layer__item">PM2</span>
-                  <span class="arch-layer__item">Nginx</span>
-                  <span class="arch-layer__item">GitHub Actions</span>
-                  <span class="arch-layer__item">Rollback</span>
-                </div>
-              </div>
+              ${i < project.archLayers.length - 1 ? `<div class="arch-arrow">↕</div>` : ""}`,
+                )
+                .join("")}
             </div>
           </div>
         </div>
       </section>
+    `
+          : ""
+      }
 
       ${challengesHtml}
       ${metricsHtml}

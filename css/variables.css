@@ -34,6 +34,7 @@
   --weight-black: 900;
 
   /* Spacing */
+  --nav-height: 188px;
   --padding-section-x: 60px;
   --padding-section-y: 120px;
   --padding-nav: 24px 60px;
@@ -53,6 +54,7 @@
 
 @media (max-width: 768px) {
   :root {
+    --nav-height: 92px;
     --padding-section-x: 24px;
   }
 }

@@ -320,10 +320,17 @@
     gap: 8px;
     text-align: center;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .contact-link__hint {
     display: none;
+  }
+
+  .contact__divider-text {
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -341,14 +348,3 @@
   }
 }
 
-@media (max-width: 768px) {
-  .contact__divider-text {
-    white-space: normal;
-    text-align: center;
-  }
-
-  .contact-link {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}

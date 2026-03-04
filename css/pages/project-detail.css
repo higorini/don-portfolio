@@ -192,7 +192,7 @@
 }
 
 .project-overview {
-  padding: 0 0;
+  padding: 0;
 }
 
 .project-overview__grid {
@@ -520,7 +520,7 @@
 .arch-layer--backend .arch-layer__label {
   color: #68a063;
 }
-.arch-layer--db .arch-layer__label {
+.arch-layer--database .arch-layer__label {
   color: #4db33d;
 }
 .arch-layer--infra .arch-layer__label {
@@ -947,5 +947,40 @@
 
   .project-metrics__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.project-hero__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.project-hero__actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-hero__action-btn--restricted {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .project-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

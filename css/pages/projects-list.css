@@ -1,5 +1,5 @@
 .projects-page__hero {
-  padding: 190px 0 0;
+  padding: var(--nav-height) 0 0;
   position: relative;
   border-bottom: 1px solid var(--border);
 }
@@ -34,7 +34,6 @@
   gap: 8px;
   margin-bottom: 60px;
   transition: color 0.3s;
-  display: block;
 }
 
 .projects-page__back:hover {
@@ -171,7 +170,7 @@
 
 @media (max-width: 768px) {
   .projects-page__hero {
-    padding: 120px 0 24px;
+    padding: var(--nav-height) 0 24px;
   }
 
   .projects-page__title {

@@ -46,7 +46,19 @@
   </head>
 
   <body>
-    <canvas id="stars-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;will-change:transform;"></canvas>
+    <canvas
+      id="stars-canvas"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        will-change: transform;
+      "
+    ></canvas>
     <div id="cursor" class="cursor"></div>
     <div id="cursor-trail" class="cursor__trail"></div>
 
@@ -70,7 +82,11 @@
           <a href="#contact" data-link class="nav__link">Contacto</a>
         </li>
       </ul>
-      <button class="nav__hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <button
+        class="nav__hamburger"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
         <span class="nav__hamburger-line"></span>
         <span class="nav__hamburger-line"></span>
         <span class="nav__hamburger-line"></span>
@@ -161,24 +177,27 @@
         <img src="/assets/images/logo.svg" alt="" class="hero__lion" />
 
         <div class="hero__content">
-          <div class="hero__eyebrow">Portfolio Pessoal</div>
+          <div class="hero__eyebrow">Portfólio Pessoal</div>
           <h1 class="hero__name">Don</h1>
           <p class="hero__title">
             Desenvolvedor Full Stack · Engenheiro de Sistemas · Criador
           </p>
+
           <p class="hero__description">
-            Construo sistemas que
-            <span class="hero__highlight hero__highlight--gold">escalam</span>,
+            Eu construo produto com sangue-frio de produção e olhar de artesão
+            no detalhe. Sistemas que
+            <span class="hero__highlight hero__highlight--gold">aguentam</span>,
             experiências que
-            <span class="hero__highlight hero__highlight--gold">encantam</span>
-            e código que
-            <span class="hero__highlight hero__highlight--gold">resiste</span>.
-            De ERPs em produção a interfaces com alma.
+            <span class="hero__highlight hero__highlight--gold"
+              >fazem sentido</span
+            >
+            e código que não desmancha quando a realidade aperta. De ERPs em
+            operação a interfaces com identidade.
           </p>
 
           <div class="hero__ctas">
-            <a href="#projects" class="btn btn--primary">Ver Projetos</a>
-            <a href="#contact" class="btn btn--outline">Falar comigo</a>
+            <a href="#projects" data-link class="btn btn--primary">Ver projectos</a>
+            <a href="#contact" data-link class="btn btn--outline">Falar comigo</a>
           </div>
         </div>
 
@@ -199,32 +218,28 @@
           <div class="about__grid">
             <div class="about__text">
               <p>
-                Sou desenvolvedor com
-                <span class="about__highlight"
-                  >paixão por sistemas robustos</span
-                >
-                e interfaces com personalidade. Trabalho com stacks modernas
-                como Next.js, React, Node e MongoDB — mas o que me define não é
-                a tecnologia: é a
-                <span class="about__highlight"
-                  >mentalidade de resolver problemas reais</span
-                >
-                com código limpo e decisões bem pensadas.
+                Eu sou um developer movido por duas coisas:
+                <span class="about__highlight">robustez</span> e
+                <span class="about__highlight">presença</span>. Gosto de
+                sistemas que não tremem sob carga e de interfaces que têm
+                personalidade sem perder clareza.
               </p>
 
               <p>
-                Tenho experiência em ambientes de produção exigentes, onde
-                performance, segurança e escalabilidade não são opcionais.
-                Também gosto do lado criativo: UI com presença e produtos que
+                Trabalho com stacks modernas como Next.js, React, Node e bases
+                de dados como MongoDB/PostgreSQL. Mas, no fim, tecnologia é só
+                ferramenta: o que me define é a
                 <span class="about__highlight"
-                  >surpreendem pela inteligência</span
-                >.
+                  >forma como eu penso o problema</span
+                >
+                — cortar ruído, escolher o que importa e entregar algo que
+                continue de pé daqui a seis meses.
               </p>
 
               <p>
-                Quando não estou codando, estou refinando: arquitetura,
-                legibilidade, automação e aquela melhoria pequena que faz o
-                sistema ficar
+                Quando não estou a escrever código, estou a afiar o que vem por
+                trás dele: arquitectura, legibilidade, automação e aquele tipo
+                de melhoria pequena que ninguém aplaude, mas que deixa o sistema
                 <span class="about__highlight">mais sólido do que ontem</span>.
               </p>
             </div>
@@ -237,12 +252,12 @@
 
               <div class="stat-card">
                 <div class="stat-card__number" id="stat-years">7</div>
-                <div class="stat-card__label">Anos construindo produtos</div>
+                <div class="stat-card__label">Anos a construir produto</div>
               </div>
 
               <div class="stat-card">
                 <div class="stat-card__number">28+</div>
-                <div class="stat-card__label">Fluxos automatizados</div>
+                <div class="stat-card__label">Processos automatizados</div>
               </div>
 
               <div class="stat-card">
@@ -264,6 +279,7 @@
 
           <div class="skills__grid">
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -282,8 +298,9 @@
               </svg>
               <div class="skill-block__name">Frontend</div>
               <div class="skill-block__desc">
-                Interfaces modernas e performáticas, com foco em clareza,
-                acessibilidade e experiência real do usuário.
+                Interfaces que dão prazer de usar: rápidas, claras e
+                consistentes. Menos fricção, mais intenção — e detalhes que
+                parecem simples porque foram bem pensados.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">Next.js</span>
@@ -294,6 +311,7 @@
             </div>
 
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -321,8 +339,9 @@
               </svg>
               <div class="skill-block__name">Backend</div>
               <div class="skill-block__desc">
-                APIs sólidas e bem versionadas, com arquitetura preparada para
-                produção, observabilidade e evolução contínua.
+                APIs que duram: bem versionadas, fáceis de evoluir e prontas
+                para produção. Eu penso em observabilidade, segurança e
+                manutenção desde o primeiro endpoint.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">Node.js</span>
@@ -333,6 +352,7 @@
             </div>
 
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -349,8 +369,9 @@
               </svg>
               <div class="skill-block__name">DevOps</div>
               <div class="skill-block__desc">
-                Deploy confiável, hardening e automação: pipelines CI/CD,
-                ambientes reproduzíveis e monitoramento para manter tudo de pé.
+                Colocar no ar é metade do trabalho — manter de pé é a outra
+                metade. Automação, hardening, deploy previsível e a disciplina
+                que evita surpresas às 3 da manhã.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">Nginx</span>
@@ -361,6 +382,7 @@
             </div>
 
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -378,8 +400,9 @@
               </svg>
               <div class="skill-block__name">Design & UI</div>
               <div class="skill-block__desc">
-                Interfaces com identidade visual forte. Do wireframe ao produto
-                final com consistência, micro-interações e acabamento premium.
+                UI com assinatura. Do wireframe ao produto final com
+                consistência visual, micro-interacções e acabamento — sem
+                transformar o design num “peso” para o código.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">Figma</span>
@@ -390,6 +413,7 @@
             </div>
 
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -409,8 +433,9 @@
               </svg>
               <div class="skill-block__name">Segurança</div>
               <div class="skill-block__desc">
-                Segurança aplicada do início ao deploy: autenticação,
-                autorização, proteção de APIs e práticas alinhadas a OWASP.
+                Segurança aplicada no dia-a-dia: autenticação, autorização,
+                protecção de APIs e práticas alinhadas a OWASP — sem “deixar
+                para o fim”.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">JWT</span>
@@ -421,6 +446,7 @@
             </div>
 
             <div class="skill-block">
+              <!-- icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -438,13 +464,14 @@
               </svg>
               <div class="skill-block__name">Sistemas</div>
               <div class="skill-block__desc">
-                ERPs e plataformas críticas: multi-tenant, integrações, fluxos
-                de negócio e rastreabilidade com dados confiáveis.
+                ERPs e plataformas críticas com regras de negócio reais:
+                integrações, rastreabilidade, logs e dados confiáveis — porque a
+                operação não pode “adivinhar”.
               </div>
               <div class="skill-block__tags">
                 <span class="tag">ERP</span>
                 <span class="tag">Multi-tenant</span>
-                <span class="tag">Integrations</span>
+                <span class="tag">Integrações</span>
                 <span class="tag">Audit Logs</span>
               </div>
             </div>
@@ -456,7 +483,7 @@
         <div class="section-container">
           <div class="section__header">
             <span class="section__number">03</span>
-            <h2 class="section__title">Projetos</h2>
+            <h2 class="section__title">Projectos</h2>
             <div class="section__line"></div>
           </div>
 
@@ -464,7 +491,7 @@
 
           <div class="projects__footer">
             <a href="/projetos" data-link class="btn btn--outline"
-              >Ver todos os projetos</a
+              >Ver todos os projectos</a
             >
           </div>
         </div>
@@ -480,10 +507,10 @@
           />
 
           <div class="contact__inner">
-            <h2 class="contact__headline">Vamos construir algo épico!</h2>
+            <h2 class="contact__headline">Vamos construir algo memorável.</h2>
             <p class="contact__sub">
-              Aberto a projetos desafiadores, colaborações criativas e
-              oportunidades que valham a pena.
+              Estou aberto a projectos desafiantes, colaborações criativas e
+              oportunidades em que faça sentido entrar com cabeça e coração.
             </p>
           </div>
 
@@ -527,13 +554,14 @@
 
             <div class="contact__divider">
               <span class="contact__divider-text"
-                >Ou se preferir um contato mais direto</span
+                >Ou, se preferires, um contacto directo</span
               >
             </div>
 
             <div class="contact__links">
-              <a href="" class="contact-link"
+              <a href="https://wa.me/351939989852?text=Ol%C3%A1!%20Vim%20pelo%20teu%20portf%C3%B3lio%20e%20gostava%20de%20marcar%20um%20contacto%20r%C3%A1pido.%20Tenho%20um%20projecto%2Fideia%20em%20mente%20e%20queria%20perceber%20como%20podemos%20avan%C3%A7ar%20%E2%80%94%20tens%20disponibilidade%20esta%20semana%3F" target="_blank" rel="noopener noreferrer" class="contact-link"
                 ><div class="contact-link__main">
+                  <!-- icon -->
                   <svg
                     class="contact-link__icon"
                     viewBox="0 0 24 24"
@@ -555,7 +583,7 @@
                 </div>
 
                 <span class="contact-link__hint"
-                  >Responderei em até 24hrs</span
+                  >Normalmente respondo no próprio dia</span
                 ></a
               >
 
@@ -566,6 +594,7 @@
                 class="contact-link contact-link--linkedin"
               >
                 <div class="contact-link__main">
+                  <!-- icon -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -586,7 +615,7 @@
                   </svg>
                   <span class="contact-link__name">LinkedIn</span>
                 </div>
-                <span class="contact-link__hint">Vamos nos conectar</span></a
+                <span class="contact-link__hint">Vamos falar por lá</span></a
               >
             </div>
           </div>

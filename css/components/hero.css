@@ -5,7 +5,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 0 var(--padding-section-x);
+  padding: var(--nav-height) var(--padding-section-x) 0;
 }
 
 .hero::after {

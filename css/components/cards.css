@@ -179,3 +179,29 @@
     padding: 24px 20px;
   }
 }
+
+.project-item__badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.project-item__badge {
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+}
+
+.project-item__badge--private {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.project-item__badge--code,
+.project-item__badge--demo {
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  color: var(--gold);
+}
