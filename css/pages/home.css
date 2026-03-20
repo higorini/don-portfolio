@@ -163,7 +163,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 50%;
   opacity: 0.04;
   pointer-events: none;
 }
@@ -347,4 +347,3 @@
     font-size: 0.95rem;
   }
 }
-
